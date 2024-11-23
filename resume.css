@@ -1,0 +1,266 @@
+/* Resume Section Variables */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --text-color: #333;
+  --background-color: #f9f9f9;
+  --card-bg: #ffffff;
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Resume Section Styles */
+.resume-section {
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, var(--background-color) 0%, #ffffff 100%);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Section Title Styles */
+.section-title {
+  font-size: 2.8rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+.section-title:hover::after {
+  width: 120px;
+}
+
+/* Section Styles */
+.section {
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.section.animate {
+  animation: fadeInUp 0.8s forwards;
+}
+
+.subsection-title {
+  font-size: 1.8rem;
+  color: var(--secondary-color);
+  margin-bottom: 2rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.subsection-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 100%;
+  background: var(--secondary-color);
+  border-radius: 3px;
+}
+
+/* Resume Item Styles */
+.resume-item {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.resume-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: var(--accent-color);
+  transform: scaleY(0);
+  transition: var(--transition);
+}
+
+.resume-item:hover {
+  transform: translateX(10px);
+  box-shadow: var(--shadow-md);
+}
+
+.resume-item:hover::before {
+  transform: scaleY(1);
+}
+
+.resume-item h4 {
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.resume-item-date {
+  display: inline-block;
+  color: var(--accent-color);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  padding: 0.3rem 1rem;
+  background: rgba(231, 76, 60, 0.1);
+  border-radius: 20px;
+}
+
+.resume-item p {
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Skills List Styles */
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.skills-list li {
+  background: var(--card-bg);
+  padding: 1.2rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  position: relative;
+  padding-left: 3rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s forwards;
+}
+
+.skills-list li::before {
+  content: '▹';
+  position: absolute;
+  left: 1.2rem;
+  color: var(--accent-color);
+  font-size: 1.2rem;
+}
+
+.skills-list li:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  background: var(--secondary-color);
+  color: white;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animations for skills */
+.skills-list li:nth-child(1) { animation-delay: 0.1s; }
+.skills-list li:nth-child(2) { animation-delay: 0.2s; }
+.skills-list li:nth-child(3) { animation-delay: 0.3s; }
+.skills-list li:nth-child(4) { animation-delay: 0.4s; }
+.skills-list li:nth-child(5) { animation-delay: 0.5s; }
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .resume-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2.4rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .subsection-title {
+    font-size: 1.6rem;
+  }
+
+  .resume-item {
+    padding: 1.5rem;
+  }
+
+  .resume-item h4 {
+    font-size: 1.2rem;
+  }
+
+  .skills-list {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .resume-section {
+    padding: 3rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .subsection-title {
+    font-size: 1.4rem;
+    padding-left: 1rem;
+  }
+
+  .resume-item {
+    padding: 1.2rem;
+  }
+
+  .skills-list {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-list li {
+    padding: 1rem 1rem 1rem 2.5rem;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #1a1a1a;
+    --card-bg: #2d2d2d;
+    --text-color: #e0e0e0;
+    --primary-color: #64b5f6;
+  }
+}
+
+/* Add this JavaScript for scroll animations */

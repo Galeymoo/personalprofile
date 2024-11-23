@@ -1,0 +1,64 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url('flower.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.home {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.intro {
+  color: #fff; /* Change text color to white */
+  padding: 20px;
+}
+
+/* Optional: Add a semi-transparent overlay to make text more readable */
+.home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+  z-index: 1;
+}
+
+.intro {
+  position: relative;
+  z-index: 2; /* Places content above the overlay */
+}
+
+/* Style for social icons */
+/* General styles for social icons */
+.social-icons {
+  display: flex;
+  gap: 10px; /* Space between icons */
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.social-icon {
+  font-size: 2rem; /* Make the icons bigger */
+  color:white; /* Icon color */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect */
+.social-icon:hover {
+  transform: translateY(-5px) scale(1.2); /* Move up and increase size */
+  color:#f39c12; /* Optional: Change color on hover */
+}

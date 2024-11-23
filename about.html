@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galem's Portfolio | About Me</title>
+    <link rel="stylesheet" href="about.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">Galem's Portfolio</a>
+            </div>
+            
+            <div class="hamburger" aria-label="Menu Toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
+                    <li class="nav-item"><a href="resume.html" class="nav-link">Resume</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- About Me Section -->
+        <section id="about-me" class="about-section">
+            <div class="container">
+                <div class="profile-content">
+                    <div class="profile-pic-wrapper">
+                        <img src="image.jpeg" alt="Galem's Profile Picture" class="profile-image">
+                        
+                    </div>
+                    
+                    <div class="profile-details">
+                        <h1 class="section-title">About Me</h1>
+                        <p class="profile-description">
+                            Hello! I'm Galey Mo, currently specializing in Data Science & Data Analytics.
+                            I'm also a UI/UX student. 
+                        </p>
+                        
+                        <div class="education-section">
+                            <h2 class="subsection-title">Education</h2>
+                            <ul class="education-list">
+                                <li class="education-item">
+                                    <span class="education-year">2010-2016</span>
+                                    <div class="education-content">
+                                        <strong>Pp-Six</strong>
+                                        <span class="education-place">Wangdue Primary School</span>
+                                    </div>
+                                </li>
+                                <li class="education-item">
+                                    <span class="education-year">2017-2020</span>
+                                    <div class="education-content">
+                                        <strong>Grade 7-10</strong>
+                                        <span class="education-place">Samtengang Central School</span>
+                                    </div>
+                                <li class="education-item">
+                                    <span class="education-year">2021-2022</span>
+                                    <div class="education-content">
+                                        <strong>Grade 11 & 12</strong>
+                                        <span class="education-place">Punakha Central School</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="interests-section">
+                            <h2 class="subsection-title">Interests & Hobbies</h2>
+                            <div class="interests-grid">
+                                <div class="interest-item">
+                                    <i class="fas fa-palette"></i>
+                                    <span>Design</span>
+                                </div>
+                                <div class="interest-item">
+                                    <i class='bx bxs-movie-play'></i>
+                                    <span>Movie</span>
+                                </div>
+                                <div class="interest-item">
+                                    <i class='bx bxs-music' ></i>
+                                    <span>Music</span>
+                                </div>
+                                <div class="interest-item">
+                                    <i class='bx bxs-bowl-hot'></i>
+                                    <span>Cooking</span>
+                                </div>
+                            </div>
+                            <p class="interests-description">
+                                I'm passionate about design, cooking, and exploring new recipes. 
+                                In my free time, I love watching korean dramas,and listen to music to refresh my mind.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Galem's Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const header = document.querySelector('.header');
+            const body = document.body;
+
+            // Toggle mobile menu
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                body.classList.toggle('no-scroll');
+            });
+
+            // Close mobile menu when clicking links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    body.classList.remove('no-scroll');
+                });
+            });
+
+            // Header scroll effect
+            let lastScroll = 0;
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+
+                if (currentScroll > lastScroll) {
+                    header.classList.add('scroll-down');
+                } else {
+                    header.classList.remove('scroll-down');
+                }
+                
+                lastScroll = currentScroll;
+            });
+
+            // Add animation classes on scroll
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.profile-content > *, .education-item, .interest-item')
+                .forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
